@@ -171,7 +171,8 @@ class ZTilt:
                        for x, y in self.z_positions]
         self.z_helper.adjust_steppers(adjustments, speed)
         return self.z_status.check_retry_result(
-            self.retry_helper.check_retry([p[2] for p in positions]))
+            #self.retry_helper.check_retry([p[2] for p in positions]))
+            self.retry_helper.check_retry(adjustments) #use adjustments instead, converges faster
     def get_status(self, eventtime):
             return self.z_status.get_status(eventtime)
 
